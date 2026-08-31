@@ -70,9 +70,8 @@ garantir la reproductibilitat exacta dels resultats reportats al TFG.
 ├── README.md
 ├── requirements.txt
 ├── LICENSE
-└── src/
-    ├── sequence_form_lp.py   # Resolució per LP en forma de seqüència
-    └── cfr_kuhn.py           # Resolució per CFR (autoaprenentatge)
+├──  sequence_form_lp.py   # Resolució per LP en forma de seqüència
+└── cfr_kuhn.py           # Resolució per CFR (autoaprenentatge)
 ```
 
 ## Resultats esperats
