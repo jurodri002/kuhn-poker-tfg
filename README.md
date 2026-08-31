@@ -5,9 +5,9 @@ corresponents del TFG *[títol del TFG]*.
 
 Es resol el joc de Kuhn per dues vies independents:
 
-1. **Programació lineal en forma de seqüència** (`src/sequence_form_lp.py`),
+1. **Programació lineal en forma de seqüència** (`sequence_form_lp.py`),
    seguint Koller, Megiddo i von Stengel (1994) i von Stengel (1996).
-2. **Counterfactual Regret Minimization (CFR)** (`src/cfr_kuhn.py`), seguint
+2. **Counterfactual Regret Minimization (CFR)** (`cfr_kuhn.py`), seguint
    Zinkevich, Johanson, Bowling i Piccione (2007), amb l'esquema d'implementació
    de Neller i Lanctot (2013).
 
