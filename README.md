@@ -26,7 +26,7 @@ Requereix Python ≥ 3.9.
 ### Forma de seqüència (LP)
 
 ```bash
-python3 src/sequence_form_lp.py
+python3 sequence_form_lp.py
 ```
 
 Construeix explícitament les seqüències $Q_A$, $Q_B$, les matrius de
@@ -43,7 +43,7 @@ alpha = b_B(Ap | J, Pa) = 0.3333  (teoric 1/3 = 0.3333)
 ### CFR (autoaprenentatge)
 
 ```bash
-python3 src/cfr_kuhn.py
+python3 cfr_kuhn.py
 ```
 
 Per defecte entrena amb checkpoints fins a $10^5$ iteracions (uns 10 segons),
