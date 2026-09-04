@@ -125,7 +125,7 @@ def build_M():
     p_deal = 1 / len(deals)  # cada un dels 6 repartiments es equiprobable
 
     for cA, cB in deals:
-        # "pp": A passa, B passa (mostra senzilla)
+        # "pp": A passa, B passa (showdown senzill)
         qa, qb = IDX_A[f"{cA}p"], IDX_B[f"{cB}pp"]
         M[qa, qb] += p_deal * payoff_to_A(cA, cB, "pp")
 
@@ -141,7 +141,7 @@ def build_M():
         qa, qb = IDX_A[f"{cA}pp"], IDX_B[f"{cB}pb"]
         M[qa, qb] += p_deal * payoff_to_A(cA, cB, "pbp")
 
-        # "pbb": A passa, B aposta, A iguala (mostra doble)
+        # "pbb": A passa, B aposta, A iguala (showdown doble)
         qa, qb = IDX_A[f"{cA}pb"], IDX_B[f"{cB}pb"]
         M[qa, qb] += p_deal * payoff_to_A(cA, cB, "pbb")
 
@@ -190,14 +190,20 @@ def solve():
     return V, pi_A, pi_B
 
 
-def realization_to_behavior(pi, card, parent_seq_key, actions_keys):
+def realization_to_behavior(pi, parent_seq_key, actions_keys):
     """Converteix pesos d'un pla de realitzacio en probabilitats de
-    comportament b_i(I)_a = pi(q.a) / pi(q), tal com defineix el
-    Remark obs:realitzacio_comportament del TFG."""
+    comportament b_i(I)_a = pi(q.a) / pi(q), tal com defineix 
+    l'Obsservació de realitzacio de comportament del TFG."""
+
     parent_weight = pi[parent_seq_key]
+
     if parent_weight <= 1e-12:
-        return None  # node fora del cami, indeterminat per aquesta via
-    return {a: pi[k] / parent_weight for a, k in zip(['p', 'b'], actions_keys)}
+        return None
+
+    return {
+        a: pi[k] / parent_weight
+        for a, k in zip(['p', 'b'], actions_keys)
+    }
 
 
 if __name__ == "__main__":
@@ -214,17 +220,30 @@ if __name__ == "__main__":
     print("Pla de realitzacio de B (pi_B):")
     for s in SEQ_B:
         print(f"  {s:>6}: {pi_B[s]:.4f}")
+    print()
+    print("Estrategies de comportament de B:")
+
+    for c in CARDS:
+        b_after_p = realization_to_behavior( pi_B, "()", [f"{c}pp", f"{c}pb"])
+        print(f"  B amb carta {c}, despres que A passi: {b_after_p}")
+
+        b_after_b = realization_to_behavior(pi_B, "()",[f"{c}bp", f"{c}bb"])
+        print( f"  B amb carta {c}, despres que A aposti: {b_after_b}")
 
     print()
     print("Estrategies de comportament derivades (b_i(I)_a = pi(q.a)/pi(q)):")
     for c in CARDS:
-        b = realization_to_behavior(pi_A, c, '()', [f"{c}p", f"{c}b"])
+        b = realization_to_behavior(pi_A, '()', [f"{c}p", f"{c}b"])
         print(f"  A amb carta {c}, primera decisio: {b}")
     for c in CARDS:
-        b = realization_to_behavior(pi_A, c, f"{c}p", [f"{c}pp", f"{c}pb"])
+        b = realization_to_behavior(pi_A, f"{c}p", [f"{c}pp", f"{c}pb"])
         print(f"  A amb carta {c}, segona decisio (si arriba): {b}")
 
     print()
     # alpha = b_B(Ap | J, Pa): normalitzem respecte la sequencia pare "()"
     alpha = pi_B["0pb"] / pi_B["()"]
-    print(f"alpha = b_B(Ap | J, Pa) = {alpha:.4f}  (teoric 1/3 = {1/3:.4f})")
+    print(f"alpha = b_B(Ap | J, Pa) = {alpha:.4f}")
+    beta = pi_A["1pb"]/pi_A["1p"]
+    print(f"beta = b_A(Ig | Q, Ap) = {beta:-4f}")
+    gamma = pi_A["2b"]
+    print(f"gamma = b_A(Ap | K) = {gamma:-4f}")
