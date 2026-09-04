@@ -125,7 +125,7 @@ def build_M():
     p_deal = 1 / len(deals)  # cada un dels 6 repartiments es equiprobable
 
     for cA, cB in deals:
-        # "pp": A passa, B passa (showdown senzill)
+        # "pp": A passa, B passa (mostra senzilla)
         qa, qb = IDX_A[f"{cA}p"], IDX_B[f"{cB}pp"]
         M[qa, qb] += p_deal * payoff_to_A(cA, cB, "pp")
 
@@ -141,7 +141,7 @@ def build_M():
         qa, qb = IDX_A[f"{cA}pp"], IDX_B[f"{cB}pb"]
         M[qa, qb] += p_deal * payoff_to_A(cA, cB, "pbp")
 
-        # "pbb": A passa, B aposta, A iguala (showdown doble)
+        # "pbb": A passa, B aposta, A iguala (mostra doble)
         qa, qb = IDX_A[f"{cA}pb"], IDX_B[f"{cB}pb"]
         M[qa, qb] += p_deal * payoff_to_A(cA, cB, "pbb")
 
