@@ -1,7 +1,7 @@
 # Joc de Kuhn: resolució per programació lineal i CFR
 
 Codi font associat al Capítol 4 (*Jocs d'informació incompleta*), al Capítol 5 (*Implementació: el joc de Kuhn*) i als annexos
-corresponents del TFG *[títol del TFG]*.
+corresponents del Treball de Fi de Grau de Matemàtiques, *De la teoria de jocs a l'aprenentatge per regret: una anàlisi del joc de Kuhn*.
 
 Es resol el joc de Kuhn per dues vies independents:
 
