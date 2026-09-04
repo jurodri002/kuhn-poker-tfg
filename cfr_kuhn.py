@@ -27,7 +27,7 @@ ACTIONS = ['p', 'b']  # passar/apostar a la primera decisio, retirar-se/igualar 
 # temps estimat: unes 2-3 hores per arribar a 10^8).
 CHECKPOINTS = [10**2, 10**3, 10**4, 10**5]
 
-# Nodes rellevants per llegir alpha, beta, gamma (Taula de notacio del TFG)
+# Conjunts d'informació rellevants per llegir alpha, beta, gamma (Taula de notacio del TFG)
 NODE_ALPHA = "0p"    # b_B(Ap | J, Pa)
 NODE_BETA = "1pb"    # b_A(Ig | Q, Ap)
 NODE_GAMMA = "2"     # b_A(Ap | K)
