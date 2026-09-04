@@ -84,7 +84,7 @@ garantir la reproductibilitat exacta dels resultats reportats al TFG.
 $*$ $\beta$ i $\gamma$ no tenen valor teòric únic, són punts d'indiferència de
 l'equilibri un cop $\alpha=\tfrac13$ (veure Secció "Per què CFR convergeix a un
 equilibri diferent" de l'Annex del TFG). El LP en troba un vèrtex concret del
-conjunt continu d'equilibris; CFR mai s'hi estabilitza perquè no rep cap
+conjunt continu d'equilibris on $\beta=\tfrac13$ i $\gamma=0$. Per l'altra banda, CFR mai s'hi estabilitza perquè no rep cap
 senyal d'aprenentatge en aquests nodes.
 
 ## Referències
